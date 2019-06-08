@@ -1,5 +1,6 @@
 package base;
 
+import cucumber.api.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,13 +10,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Andres on 6/7/2019.
  */
-class Driver {
+public class Driver {
 
     private static WebDriver driver;
     private String scenarioName;
 
-    Driver(String scenarioName){
-        this.scenarioName = scenarioName;
+    public Driver() { throw new IllegalStateException("Should be instantiated using parametrized constructor only"); }
+
+    public Driver(Scenario scenario){
+        this.scenarioName = scenario.getName();
         TestSettings settings = TestSettings.getInstance();
         //String chromeDriverPath = settings.
         switch (settings.getDriverType()) {
@@ -51,7 +54,7 @@ class Driver {
         return new ChromeDriver(chromeOptions);
     }
 
-    WebDriver getWebdriver(){
+    public WebDriver getWebdriver(){
         return driver;
     }
 

@@ -19,8 +19,9 @@ public abstract class BasePage {
         wait = new WebDriverWait(driver, DEFAULT_WAIT_FOR_ELEMENT_LOAD);
     }
 
-    public void navigateToURL(String url){
+    public BasePage navigateToURL(String url){
         driver.navigate().to(url);
+        return this;
     }
 
     public String getPageTitle(){

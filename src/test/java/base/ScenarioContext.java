@@ -25,4 +25,11 @@ public final class ScenarioContext {
     public static Object get(Object key){
         return scenarioContext.get(key.toString());
     }
+
+    public enum ContextKey{
+        // Test
+        DRIVER,
+        // Pages
+        LOGIN_PAGE, INBOX_PAGE
+    }
 }

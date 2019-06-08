@@ -29,6 +29,8 @@ public final class TestSettings {
         instance.waitPageLoad = getTestSettingsIntegerValue("waitPageLoad");
         instance.waitElementLoad = getTestSettingsIntegerValue("waitElementLoad");
         instance.waitCustom = getTestSettingsIntegerValue("waitCustom");
+        instance.driverType = getTestSettingsValue("driverType");
+        instance.windowSize = getTestSettingsValue("windowSize");
     }
 
     public static TestSettings getInstance(){
