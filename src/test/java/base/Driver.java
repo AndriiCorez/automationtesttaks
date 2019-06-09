@@ -20,7 +20,7 @@ public class Driver {
     public Driver(Scenario scenario){
         this.scenarioName = scenario.getName();
         TestSettings settings = TestSettings.getInstance();
-        //String chromeDriverPath = settings.
+        System.setProperty("webdriver.chrome.driver", settings.getChromeDriverPath());
         switch (settings.getDriverType()) {
             case "chrome":
                 driver = initChromeDriver();

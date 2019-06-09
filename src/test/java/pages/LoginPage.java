@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Created by Andres on 6/7/2019.
@@ -16,7 +17,7 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "identifierid")
+    @FindBy(id = "identifierId")
     private WebElement emailFld;
 
     @FindBy(xpath = "//input[@name='password']")
@@ -29,9 +30,11 @@ public class LoginPage extends BasePage {
     private WebElement passwordNextBtn;
 
     public InboxPage signIn(String emailAccount, String password){
+        wait.until(ExpectedConditions.visibilityOf(emailFld));
         emailFld.sendKeys(emailAccount);
         loginNextBtn.click();
-        passwordFld.click();
+        passwordFld.sendKeys(password);
+        wait.until(ExpectedConditions.visibilityOf(passwordNextBtn));
         passwordNextBtn.click();
         return new InboxPage(driver);
     }

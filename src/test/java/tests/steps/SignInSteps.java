@@ -4,9 +4,12 @@ import base.ScenarioContext;
 import base.TestSettings;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import helpers.Await;
 import org.testng.Assert;
 import pages.InboxPage;
 import pages.LoginPage;
+
+import static helpers.AssertDataGenerator.*;
 
 /**
  * Created by Andres on 6/7/2019.
@@ -20,7 +23,7 @@ public class SignInSteps {
         TestSettings ts = TestSettings.getInstance();
         LoginPage page = (LoginPage) ScenarioContext.get(ScenarioContext.ContextKey.LOGIN_PAGE);
         page.navigateToURL(ts.getSignInUrl());
-        page.signIn(ts.getSignInLogin(), ts.getSignInPassword());
+        ScenarioContext.set(ScenarioContext.ContextKey.INBOX_PAGE, page.signIn(ts.getSignInLogin(), ts.getSignInPassword()));
     }
 
     // **** THEN's ****
@@ -28,7 +31,8 @@ public class SignInSteps {
     @Then("^I'm on application Inbox page$")
     public void iMOnApplicationInboxPage() throws Throwable {
         InboxPage page = (InboxPage) ScenarioContext.get(ScenarioContext.ContextKey.INBOX_PAGE);
-        Assert.assertEquals(page.getPageTitle(), "");
-        Assert.assertEquals(page.getPageURL(), "");
+        Await.waitUntil(() -> page.getPageTitle().equals(getExpectedInboxTitle()));
+        Assert.assertEquals(page.getPageTitle(), getExpectedInboxTitle());
+        Assert.assertEquals(page.getPageURL(), getExpectedInboxURL());
     }
 }

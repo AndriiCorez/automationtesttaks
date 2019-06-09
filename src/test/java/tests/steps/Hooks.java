@@ -15,12 +15,14 @@ public class Hooks {
     @Before
     public void initializeTest(Scenario scenario){
         Driver driver = new Driver(scenario);
-        ScenarioContext.set(ScenarioContext.ContextKey.LOGIN_PAGE, new LoginPage(driver.getWebdriver()));
+        LoginPage page = new LoginPage(driver.getWebdriver());
+        ScenarioContext.set(ScenarioContext.ContextKey.LOGIN_PAGE, page);
         ScenarioContext.set(ScenarioContext.ContextKey.DRIVER, driver);
     }
 
     @After
     public void embedScreenshot(Scenario scenario) {
+        Driver driver = (Driver) ScenarioContext.get(ScenarioContext.ContextKey.DRIVER);
         if (scenario.isFailed()) {
             try {
                 // Code to capture and embed images in test reports (if scenario fails)
@@ -28,5 +30,7 @@ public class Hooks {
                 e.printStackTrace();
             }
         }
+        driver.getWebdriver().close();
+        driver.getWebdriver().quit();
     }
 }

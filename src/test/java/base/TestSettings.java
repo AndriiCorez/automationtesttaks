@@ -31,6 +31,7 @@ public final class TestSettings {
         instance.waitCustom = getTestSettingsIntegerValue("waitCustom");
         instance.driverType = getTestSettingsValue("driverType");
         instance.windowSize = getTestSettingsValue("windowSize");
+        instance.chromeDriverPath = getTestSettingsValue("chromeDriverPath");
     }
 
     public static TestSettings getInstance(){
@@ -57,6 +58,7 @@ public final class TestSettings {
     private Integer waitCustom;
     private String driverType;
     private String windowSize;
+    private String chromeDriverPath;
 
     public String getSignInUrl(){
         return signInUrl;
@@ -89,4 +91,6 @@ public final class TestSettings {
     public String getWindowSize(){
         return windowSize;
     }
+
+    public String getChromeDriverPath() { return chromeDriverPath; }
 }
