@@ -9,7 +9,8 @@ import org.testng.Assert;
 import pages.InboxPage;
 import pages.LoginPage;
 
-import static helpers.AssertDataGenerator.*;
+import static helpers.AssertDataGenerator.getExpectedInboxTitle;
+import static helpers.AssertDataGenerator.getExpectedInboxURL;
 
 /**
  * Created by Andres on 6/7/2019.

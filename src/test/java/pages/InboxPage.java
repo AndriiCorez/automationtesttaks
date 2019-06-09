@@ -16,8 +16,15 @@ public class InboxPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "smth")
-    private WebElement smth;
+    // **** ELEMENTS ****
 
-    
+    @FindBy(xpath = "//div[@role='button' and contains(text(),'Compose')]")
+    private WebElement composeEmailBtn;
+
+    // **** ACTIONS ****
+
+    public ComposeEmailPage clickComposeEmailButton(){
+        composeEmailBtn.click();
+        return new ComposeEmailPage(driver);
+    }
 }
