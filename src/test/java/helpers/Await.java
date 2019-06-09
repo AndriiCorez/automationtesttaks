@@ -25,4 +25,13 @@ public class Await {
                 atMost(TestSettings.getInstance().getWaitCustom(), TimeUnit.SECONDS).
                 until(condition);
     }
+
+    public static void waitUntilIgnoringExceptions(Callable<Boolean> condition){
+        withListener().
+                given().
+                ignoreExceptions().
+                await().
+                atMost(TestSettings.getInstance().getWaitCustom(), TimeUnit.SECONDS).
+                until(condition);
+    }
 }

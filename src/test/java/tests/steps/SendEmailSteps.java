@@ -3,7 +3,10 @@ package tests.steps;
 import POJOs.EmailContent;
 import base.ScenarioContext;
 import base.TestSettings;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import helpers.Await;
+import org.testng.Assert;
 import pages.ComposeEmailPage;
 import pages.InboxPage;
 
@@ -25,4 +28,18 @@ public class SendEmailSteps {
     }
 
     // **** THEN's ****
+
+    @Then("^I can see new email with \"([^\"]*)\" subject appeared in incoming mail list$")
+    public void iCanSeeNewEmailWithSubjectAppearedInIncomingMailList(String expectedSubject) throws Throwable {
+        InboxPage inboxPage = (InboxPage) ScenarioContext.get(ScenarioContext.ContextKey.INBOX_PAGE);
+        Await.waitUntilIgnoringExceptions(() -> inboxPage.getIncomingEmailTitles().get(0).equals(expectedSubject));
+        Assert.assertEquals(inboxPage.getIncomingEmailTitles().get(0), expectedSubject);
+    }
+
+    @Then("^I see popup message with \"([^\"]*)\" text on Inbox page$")
+    public void iSeePopupMessageWithTextOnInboxPage(String expectedMessageTxt) throws Throwable {
+        InboxPage inboxPage = (InboxPage) ScenarioContext.get(ScenarioContext.ContextKey.INBOX_PAGE);
+        Await.waitUntil(() -> inboxPage.getPopupMessageTxt().equals(expectedMessageTxt));
+        Assert.assertEquals(inboxPage.getPopupMessageTxt(), expectedMessageTxt);
+    }
 }
