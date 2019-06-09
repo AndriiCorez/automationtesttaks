@@ -2,10 +2,16 @@ package tests.steps;
 
 import base.Driver;
 import base.ScenarioContext;
+import base.TestSettings;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import pages.LoginPage;
+
+import java.io.File;
 
 /**
  * Created by Andres on 6/7/2019.
@@ -24,10 +30,11 @@ public class Hooks {
     public void embedScreenshot(Scenario scenario) {
         Driver driver = (Driver) ScenarioContext.get(ScenarioContext.ContextKey.DRIVER);
         if (scenario.isFailed()) {
+            File sourceFile = ((TakesScreenshot) driver.getWebdriver()).getScreenshotAs(OutputType.FILE);
             try {
-                // Code to capture and embed images in test reports (if scenario fails)
+                FileUtils.copyFile(sourceFile, new File(TestSettings.getInstance().getScreenshotsPath() + scenario.getName() + ".jpg"));
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("ERROR OCCURRED DURING TAKING SCREENSHOT:" + e.toString());
             }
         }
         driver.getWebdriver().close();

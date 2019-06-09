@@ -8,7 +8,7 @@ import base.TestSettings;
 public class AssertDataGenerator {
 
     public static String getExpectedInboxTitle(){
-        return "Inbox - " + TestSettings.getInstance().getSignInLogin() + " - Gmail";
+        return TestSettings.getInstance().getSignInLogin() + " - Gmail";
     }
 
     public static String getExpectedInboxURL(){

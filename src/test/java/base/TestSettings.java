@@ -32,6 +32,7 @@ public final class TestSettings {
         instance.driverType = getTestSettingsValue("driverType");
         instance.windowSize = getTestSettingsValue("windowSize");
         instance.chromeDriverPath = getTestSettingsValue("chromeDriverPath");
+        instance.screenshotPath = getTestSettingsValue("screenshotPath");
     }
 
     public static TestSettings getInstance(){
@@ -59,6 +60,7 @@ public final class TestSettings {
     private String driverType;
     private String windowSize;
     private String chromeDriverPath;
+    private String screenshotPath;
 
     public String getSignInUrl(){
         return signInUrl;
@@ -93,4 +95,6 @@ public final class TestSettings {
     }
 
     public String getChromeDriverPath() { return chromeDriverPath; }
+
+    public String getScreenshotsPath() { return screenshotPath; }
 }

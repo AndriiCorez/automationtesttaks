@@ -31,6 +31,8 @@ public class ScenarioContext {
         // Test
         DRIVER,
         // Pages
-        LOGIN_PAGE, INBOX_PAGE, COMPOSE_EMAIL_PAGE
+        LOGIN_PAGE, INBOX_PAGE, COMPOSE_EMAIL_PAGE,
+        // Test data
+        INCOMING_MESSAGES_NUMBER
     }
 }

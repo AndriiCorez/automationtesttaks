@@ -37,7 +37,7 @@ public class Driver {
 
     private void setDriverTimeouts(){
         driver.manage().timeouts().implicitlyWait(BasePage.DEFAULT_WAIT_FOR_ELEMENT_LOAD, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(BasePage.DEFAULT_WAIT_FOR_ELEMENT_LOAD, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(BasePage.DEFAULT_WAIT_FOR_PAGE_LOAD, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(BasePage.DEFAULT_WAIT_FOR_ELEMENT_LOAD, TimeUnit.SECONDS);
     }
 

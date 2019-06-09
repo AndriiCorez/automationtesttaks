@@ -32,8 +32,8 @@ public class SignInSteps {
     @Then("^I'm on application Inbox page$")
     public void iMOnApplicationInboxPage() throws Throwable {
         InboxPage page = (InboxPage) ScenarioContext.get(ScenarioContext.ContextKey.INBOX_PAGE);
-        Await.waitUntil(() -> page.getPageTitle().equals(getExpectedInboxTitle()));
-        Assert.assertEquals(page.getPageTitle(), getExpectedInboxTitle());
+        Await.waitUntil(() -> page.getPageTitle().endsWith(getExpectedInboxTitle()));
+        Assert.assertTrue(page.getPageTitle().endsWith(getExpectedInboxTitle()));
         Assert.assertEquals(page.getPageURL(), getExpectedInboxURL());
     }
 }
