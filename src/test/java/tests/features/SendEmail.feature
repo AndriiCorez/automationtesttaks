@@ -1,4 +1,4 @@
-Feature: Sign in email account
+Feature: Send Email
 
   Background:
     Given I sign in the application using correct credentials

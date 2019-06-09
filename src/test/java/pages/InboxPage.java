@@ -30,11 +30,23 @@ public class InboxPage extends BasePage {
     @FindBy(xpath = "//span[@class='bAq']")
     private WebElement popupMessage;
 
+    @FindBy(xpath = "//div[@role='checkbox']")
+    private List<WebElement> receivedEmailCheckbox;
+
+    @FindBy(xpath = "//div[@class='asa']")
+    private List<WebElement> topPanelActionBtns;
+
     // **** ACTIONS ****
 
     public ComposeEmailPage clickComposeEmailButton(){
         composeEmailBtn.click();
         return new ComposeEmailPage(driver);
+    }
+
+    public InboxPage deleteFirstEmail(){
+        receivedEmailCheckbox.get(0).click();
+        topPanelActionBtns.get(2).click();
+        return this;
     }
 
     // **** GETTER's ****
@@ -49,5 +61,16 @@ public class InboxPage extends BasePage {
             titles.add(e.getText());
         }
         return titles;
+    }
+
+    public int getNumberOfIncomingMessagesOnList() {
+        return receivedEmailCheckbox.size();
+    }
+
+    public boolean isIncomingMessageListEmpty() {
+        setImplicitWaitToZero();
+        boolean result = receivedEmailCheckbox.size() == 0;
+        setImplicitWaitToDefault();
+        return result;
     }
 }

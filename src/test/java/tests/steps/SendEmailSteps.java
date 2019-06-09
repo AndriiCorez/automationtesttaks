@@ -39,7 +39,8 @@ public class SendEmailSteps {
     @Then("^I see popup message with \"([^\"]*)\" text on Inbox page$")
     public void iSeePopupMessageWithTextOnInboxPage(String expectedMessageTxt) throws Throwable {
         InboxPage inboxPage = (InboxPage) ScenarioContext.get(ScenarioContext.ContextKey.INBOX_PAGE);
-        Await.waitUntil(() -> inboxPage.getPopupMessageTxt().equals(expectedMessageTxt));
+        Await.waitUntilIgnoringExceptions(() -> inboxPage.getPopupMessageTxt().equals(expectedMessageTxt));
         Assert.assertEquals(inboxPage.getPopupMessageTxt(), expectedMessageTxt);
     }
+
 }

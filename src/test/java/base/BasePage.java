@@ -3,6 +3,8 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Andres on 6/7/2019.
  */
@@ -30,5 +32,13 @@ public abstract class BasePage {
 
     public String getPageURL(){
         return  driver.getCurrentUrl();
+    }
+
+    protected void setImplicitWaitToZero(){
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    }
+
+    protected void setImplicitWaitToDefault(){
+        driver.manage().timeouts().implicitlyWait(DEFAULT_WAIT_FOR_ELEMENT_LOAD, TimeUnit.SECONDS);
     }
 }
