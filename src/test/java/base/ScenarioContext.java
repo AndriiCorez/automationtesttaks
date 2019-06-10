@@ -3,7 +3,7 @@ package base;
 import java.util.HashMap;
 
 /**
- * Created by Andres on 6/7/2019.
+ * Stores any objects during scenario run
  */
 public class ScenarioContext {
 
@@ -11,6 +11,9 @@ public class ScenarioContext {
     private ScenarioContext(){ scenarioContext = new HashMap();}
     static HashMap scenarioContext;
 
+    /**
+     * @return an instance of the Context or creates new one if instance is null
+     */
     public static ScenarioContext getInstance(){
         if (instance == null){
             instance = new ScenarioContext();
@@ -18,15 +21,27 @@ public class ScenarioContext {
         return instance;
     }
 
+    /**
+     * Stores object by
+     * @param key any object used as a Key in HashMap
+     * @param value any object used as a Value in HashMap
+     */
     public static void set(Object key, Object value) {
         getInstance();
         scenarioContext.put(key, value);
     }
 
+    /**
+     * @param key any object used as a Key in HashMap
+     * @return stored object
+     */
     public static Object get(Object key){
         return scenarioContext.get(key);
     }
 
+    /**
+     * Custom Keys for storing and retrieving objects in the Context
+     */
     public enum ContextKey{
         // Test
         DRIVER,

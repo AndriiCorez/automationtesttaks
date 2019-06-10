@@ -1,6 +1,5 @@
 package base;
 
-import cucumber.api.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,17 +7,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Andres on 6/7/2019.
+ * Manages initialization and cleaning up Selenium Webdriver instance based on specified settings properties
  */
 public class Driver {
 
     private static WebDriver driver;
-    private String scenarioName;
 
-    public Driver() { throw new IllegalStateException("Should be instantiated using parametrized constructor only"); }
-
-    public Driver(Scenario scenario){
-        this.scenarioName = scenario.getName();
+    public Driver(){
         TestSettings settings = TestSettings.getInstance();
         System.setProperty("webdriver.chrome.driver", settings.getChromeDriverPath());
         switch (settings.getDriverType()) {
@@ -31,7 +26,6 @@ public class Driver {
             default:
                 driver = initChromeDriver();
         }
-
         setDriverTimeouts();
     }
 
@@ -54,8 +48,19 @@ public class Driver {
         return new ChromeDriver(chromeOptions);
     }
 
+    /**
+     * @return current Selenium Webdriver instance
+     */
     public WebDriver getWebdriver(){
         return driver;
+    }
+
+    /**
+     * Tears down current Selenium Webdriver instance and its processes
+     */
+    public void driverTearDown(){
+        driver.close();
+        driver.quit();
     }
 
 }

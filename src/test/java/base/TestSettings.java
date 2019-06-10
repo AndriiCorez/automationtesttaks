@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by Andres on 6/7/2019.
+ * Stores settings data stored in .properties file of the project
  */
 public final class TestSettings {
 
@@ -35,6 +35,9 @@ public final class TestSettings {
         instance.screenshotPath = getTestSettingsValue("screenshotPath");
     }
 
+    /**
+     * @return an instance of the Settings or creates new one if instance is null
+     */
     public static TestSettings getInstance(){
         if (instance == null){
             properties = new Properties();
@@ -62,39 +65,70 @@ public final class TestSettings {
     private String chromeDriverPath;
     private String screenshotPath;
 
+    /**
+     * @return Application sign in page URL
+     */
     public String getSignInUrl(){
         return signInUrl;
     }
 
+    /**
+     * @return Login to pass application sign in process
+     */
     public String getSignInLogin(){
         return signInLogin;
     }
 
+    /**
+     * @return Password to pass application sign in process
+     */
     public String getSignInPassword(){
         return signInPassword;
     }
 
+    /**
+     *
+     * @return Timeout value in seconds for web page to load
+     */
     public Integer getWaitPageLoad(){
         return waitPageLoad;
     }
 
+    /**
+     * @return Timeout value in seconds for web elements to load on the web page
+     */
     public Integer getWaitElementLoad(){
         return waitElementLoad;
     }
 
+    /**
+     * @return Timeout value in seconds for any custom waiting actions
+     */
     public Integer getWaitCustom(){
         return waitCustom;
     }
 
+    /**
+     * @return Type of the Selenium Webdriver
+     */
     public String getDriverType(){
         return driverType;
     }
 
+    /**
+     * @return Window size of the Web browser
+     */
     public String getWindowSize(){
         return windowSize;
     }
 
+    /**
+     * @return File path for Selenium Webdriver executable in the system/project
+     */
     public String getChromeDriverPath() { return chromeDriverPath; }
 
+    /**
+     * @return Directory path to store screenshots made on Scenario failure
+     */
     public String getScreenshotsPath() { return screenshotPath; }
 }

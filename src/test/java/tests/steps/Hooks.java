@@ -20,14 +20,15 @@ public class Hooks {
 
     @Before
     public void initializeTest(Scenario scenario){
-        Driver driver = new Driver(scenario);
+        System.out.println(scenario.getName() + " scenario is running");
+        Driver driver = new Driver();
         LoginPage page = new LoginPage(driver.getWebdriver());
         ScenarioContext.set(ScenarioContext.ContextKey.LOGIN_PAGE, page);
         ScenarioContext.set(ScenarioContext.ContextKey.DRIVER, driver);
     }
 
     @After
-    public void embedScreenshot(Scenario scenario) {
+    public void cleanUpTest(Scenario scenario) {
         Driver driver = (Driver) ScenarioContext.get(ScenarioContext.ContextKey.DRIVER);
         if (scenario.isFailed()) {
             File sourceFile = ((TakesScreenshot) driver.getWebdriver()).getScreenshotAs(OutputType.FILE);
@@ -37,7 +38,6 @@ public class Hooks {
                 System.out.println("ERROR OCCURRED DURING TAKING SCREENSHOT:" + e.toString());
             }
         }
-        driver.getWebdriver().close();
-        driver.getWebdriver().quit();
+        driver.driverTearDown();
     }
 }
