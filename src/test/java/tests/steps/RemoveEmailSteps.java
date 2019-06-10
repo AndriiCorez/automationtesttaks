@@ -7,9 +7,6 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pages.InboxPage;
 
-/**
- * Created by Andres on 6/7/2019.
- */
 public class RemoveEmailSteps {
 
     // **** GIVEN's ****

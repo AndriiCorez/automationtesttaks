@@ -2,14 +2,15 @@ package helpers;
 
 import base.TestSettings;
 import org.awaitility.core.ConditionFactory;
-
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 import static org.awaitility.Awaitility.with;
 
 /**
- * Created by Andres on 6/9/2019.
+ * Contains functionality for waiting any for conditions to be true
+ * Default values for delay, interval are:
+ * 100 milliseconds, 100 milliseconds
  */
 public class Await {
 
@@ -19,6 +20,10 @@ public class Await {
                 "|remained:" + conditionListener.getRemainingTimeInMS()));
     }
 
+    /**
+     * Waits during the timeout specified as Custom wait in .properties settings until true output of
+     * @param condition conditional statement
+     */
     public static void waitUntil(Callable<Boolean> condition){
         withListener().
                 await().
@@ -26,6 +31,10 @@ public class Await {
                 until(condition);
     }
 
+    /**
+     * Waits ignoring any thrown exceptions during the timeout specified as Custom wait in .properties settings until true output of
+     * @param condition conditional statement
+     */
     public static void waitUntilIgnoringExceptions(Callable<Boolean> condition){
         withListener().
                 given().

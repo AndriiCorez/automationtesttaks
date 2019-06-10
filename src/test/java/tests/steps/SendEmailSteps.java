@@ -10,14 +10,9 @@ import helpers.Await;
 import org.testng.Assert;
 import pages.ComposeEmailPage;
 import pages.InboxPage;
-
 import java.util.List;
-
 import static helpers.AssertDataGenerator.getExpectedInboxTitle;
 
-/**
- * Created by Andres on 6/7/2019.
- */
 public class SendEmailSteps {
 
     // **** GIVEN's ****

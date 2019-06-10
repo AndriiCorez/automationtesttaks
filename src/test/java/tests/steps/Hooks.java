@@ -14,7 +14,7 @@ import pages.LoginPage;
 import java.io.File;
 
 /**
- * Created by Andres on 6/7/2019.
+ * Initializes and cleans up scenario run
  */
 public class Hooks {
 

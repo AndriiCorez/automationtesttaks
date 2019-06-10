@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * Created by Andres on 6/7/2019.
+ * Settings and rues for Cucumber scenario run
  */
 @CucumberOptions(
         features = "src/test/java/tests/features",

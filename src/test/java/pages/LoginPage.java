@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Created by Andres on 6/7/2019.
+ * PO for Sign in process
  */
 public class LoginPage extends BasePage {
 
@@ -16,6 +16,8 @@ public class LoginPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
+    // **** ELEMENTS ****
 
     @FindBy(id = "identifierId")
     private WebElement emailFld;
@@ -28,6 +30,8 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "passwordNext")
     private WebElement passwordNextBtn;
+
+    // **** ACTION's ****
 
     public InboxPage signIn(String emailAccount, String password){
         wait.until(ExpectedConditions.visibilityOf(emailFld));

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Created by Andres on 6/9/2019.
+ * PO for Composing and sending email messages
  */
 public class ComposeEmailPage extends BasePage {
 

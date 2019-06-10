@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Andres on 6/7/2019.
+ * PO for email messages Inbox page
  */
 public class InboxPage extends BasePage {
 

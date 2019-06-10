@@ -1,7 +1,7 @@
 package POJOs;
 
 /**
- * Created by Andres on 6/9/2019.
+ * Email message content model
  */
 public class EmailContent {
     public String subject;
