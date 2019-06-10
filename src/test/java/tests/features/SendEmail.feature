@@ -7,6 +7,7 @@ Feature: Send Email message
     Given I sign in the application using correct credentials
     Given I get current number of incoming email messages
 
+    @Regression
   Scenario: Send email message successfully
     When I send the following email to same test Gmail account
     |subject  |body  |
